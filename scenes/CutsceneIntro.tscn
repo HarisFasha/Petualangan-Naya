@@ -1,0 +1,57 @@
+[gd_scene load_steps=4 format=3 uid="uid://7esux5opjufs"]
+
+[ext_resource type="Script" uid="uid://dnwfrjnmlietd" path="res://scripts/Cutscene.gd" id="1"]
+[ext_resource type="Texture2D" uid="uid://dm04nrtxo4ec0" path="res://assets/sprites/player/idle1.png" id="2_tp048"]
+[ext_resource type="StyleBox" uid="uid://be7wq02x3i2e4" path="res://assets/ui/ComicBubble.tres" id="3"]
+
+[node name="CutsceneIntro" type="CanvasLayer"]
+process_mode = 3
+script = ExtResource("1")
+lines = Array[String](["Naya menerima kabar dari sang peramal kerajaan: jodohnya, seorang pangeran, tengah menantikannya di istana seberang negeri.", "Jalan menuju istana penuh rintangan — ada yang licin, ada yang berduri, bahkan ada yang bergerak sendiri.", "Waktunya berangkat. Semoga pertemuan ini benar-benar seindah yang diramalkan!"])
+next_scene_path = "res://scenes/Level.tscn"
+
+[node name="Background" type="ColorRect" parent="."]
+offset_right = 1628.0
+offset_bottom = 1039.0
+color = Color(0.12, 0.14, 0.2, 1)
+
+[node name="CharacterSprite" type="TextureRect" parent="."]
+offset_left = 540.0
+offset_top = 143.0
+offset_right = 790.0
+offset_bottom = 393.0
+texture = ExtResource("2_tp048")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="DialogBox" type="Panel" parent="."]
+offset_left = 50.0
+offset_top = 470.0
+offset_right = 1269.0
+offset_bottom = 610.0
+theme_override_styles/panel = ExtResource("3")
+
+[node name="Label" type="Label" parent="DialogBox"]
+layout_mode = 0
+offset_left = 25.0
+offset_top = 15.0
+offset_right = 1025.0
+offset_bottom = 100.0
+theme_override_colors/font_color = Color(0.1, 0.1, 0.12, 1)
+theme_override_font_sizes/font_size = 24
+text = "..."
+autowrap_mode = 3
+
+[node name="PromptLabel" type="Label" parent="DialogBox"]
+layout_mode = 0
+offset_left = 25.0
+offset_top = 105.0
+offset_right = 500.0
+offset_bottom = 135.0
+theme_override_colors/font_color = Color(0.35, 0.35, 0.38, 1)
+theme_override_font_sizes/font_size = 14
+text = "Tekan SPACE untuk lanjut (tahan untuk skip) • ESC untuk restart"
+
+[node name="TypeTimer" type="Timer" parent="."]
+
+[connection signal="timeout" from="TypeTimer" to="." method="_on_type_timer_timeout"]

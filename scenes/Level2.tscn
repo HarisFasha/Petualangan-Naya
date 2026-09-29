@@ -1,0 +1,273 @@
+[gd_scene load_steps=22 format=3 uid="uid://j6cvbqihfoqi"]
+
+[ext_resource type="PackedScene" uid="uid://c6i04m2rsq2fh" path="res://scenes/Player.tscn" id="1"]
+[ext_resource type="PackedScene" uid="uid://dmdb6d0st484r" path="res://scenes/Enemy.tscn" id="2"]
+[ext_resource type="PackedScene" path="res://scenes/Coin.tscn" id="3"]
+[ext_resource type="PackedScene" uid="uid://b4v8jywffq32v" path="res://scenes/Goal.tscn" id="4"]
+[ext_resource type="PackedScene" path="res://scenes/Killzone.tscn" id="5"]
+[ext_resource type="PackedScene" uid="uid://b7f1q6oq2umm7" path="res://scenes/HUD.tscn" id="6"]
+[ext_resource type="Texture2D" uid="uid://dw8mj36mhvruy" path="res://assets/sprites/terrain/top_left.png" id="8"]
+[ext_resource type="Texture2D" uid="uid://bm2mk8bn663ft" path="res://assets/sprites/terrain/top_right.png" id="9"]
+[ext_resource type="PackedScene" uid="uid://cjwmodi1kgffc" path="res://scenes/MovingPlatform.tscn" id="11"]
+[ext_resource type="Texture2D" uid="uid://caoawtbj38d1v" path="res://assets/sprites/props/stone_arch.png" id="12_3aekd"]
+[ext_resource type="PackedScene" path="res://scenes/TouchControls.tscn" id="13"]
+[ext_resource type="Texture2D" uid="uid://cj4q3itkcnqj0" path="res://assets/sprites/props/bushy_tree.png" id="14"]
+[ext_resource type="Texture2D" uid="uid://clp7jdudjdi3v" path="res://assets/sprites/props/small_tree.png" id="15"]
+[ext_resource type="Texture2D" uid="uid://diqym2f2kj6bb" path="res://assets/sprites/props/signpost.png" id="17"]
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_p6oy6"]
+load_path = "res://.godot/imported/awan 1.png-581e2f0acf3182b94e7e83442fae1eaa.ctex"
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_opqd1"]
+load_path = "res://.godot/imported/awan 2.png-b14d6516928c197e13f53b7bf483fece.ctex"
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_xyj84"]
+load_path = "res://.godot/imported/awan 3.png-1152e0ef42dc312fb1610cdb657a35a8.ctex"
+
+[sub_resource type="RectangleShape2D" id="Ground1Shape"]
+size = Vector2(600, 40)
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_gips2"]
+load_path = "res://.godot/imported/top1.png-4f9104fee3d5f933ce1c266d304cf3c6.ctex"
+
+[sub_resource type="RectangleShape2D" id="Ground2Shape"]
+size = Vector2(500, 40)
+
+[sub_resource type="RectangleShape2D" id="FinalPlatformShape"]
+size = Vector2(300, 20)
+
+[node name="Level2" type="Node2D"]
+
+[node name="Background" type="ColorRect" parent="."]
+show_behind_parent = true
+offset_left = -1248.0
+offset_top = -401.0
+offset_right = 4228.0
+offset_bottom = 1199.0
+color = Color(0.45, 0.65, 0.85, 1)
+
+[node name="awan 1" type="Sprite2D" parent="."]
+position = Vector2(488, 105)
+texture = SubResource("CompressedTexture2D_p6oy6")
+
+[node name="awan 2" type="Sprite2D" parent="."]
+position = Vector2(2220, 64)
+texture = SubResource("CompressedTexture2D_p6oy6")
+
+[node name="awan 3" type="Sprite2D" parent="."]
+position = Vector2(1658, 57.00001)
+scale = Vector2(1.2671958, 1.2662338)
+texture = SubResource("CompressedTexture2D_opqd1")
+
+[node name="awan 4" type="Sprite2D" parent="."]
+position = Vector2(2229, 78)
+texture = SubResource("CompressedTexture2D_xyj84")
+
+[node name="Ground1" type="StaticBody2D" parent="."]
+position = Vector2(400, 500)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Ground1"]
+shape = SubResource("Ground1Shape")
+
+[node name="LeftCap" type="Sprite2D" parent="Ground1"]
+position = Vector2(-252, 9.999992)
+scale = Vector2(0.75, 0.46874988)
+texture = ExtResource("8")
+
+[node name="RightCap" type="Sprite2D" parent="Ground1"]
+position = Vector2(252, 9.000019)
+scale = Vector2(0.75, 0.46875006)
+texture = ExtResource("9")
+
+[node name="Middle" type="TextureRect" parent="Ground1"]
+offset_left = -290.0
+offset_top = -20.0
+offset_right = 290.0
+offset_bottom = 39.0
+texture = SubResource("CompressedTexture2D_gips2")
+stretch_mode = 1
+
+[node name="MovingPlatform1" parent="." instance=ExtResource("11")]
+position = Vector2(800, 350)
+move_vector = Vector2(0, 100)
+speed = 60.0
+
+[node name="Ground2" type="StaticBody2D" parent="."]
+position = Vector2(1150, 500)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Ground2"]
+shape = SubResource("Ground2Shape")
+
+[node name="LeftCap" type="Sprite2D" parent="Ground2"]
+position = Vector2(-202.5, 9.00001)
+scale = Vector2(0.7578125, 0.46875033)
+texture = ExtResource("8")
+
+[node name="RightCap" type="Sprite2D" parent="Ground2"]
+position = Vector2(203, 9.499983)
+scale = Vector2(0.765625, 0.46093747)
+texture = ExtResource("9")
+
+[node name="Middle" type="TextureRect" parent="Ground2"]
+offset_left = -240.0
+offset_top = -20.0
+offset_right = 241.0
+offset_bottom = 39.0
+texture = SubResource("CompressedTexture2D_gips2")
+stretch_mode = 1
+
+[node name="MovingPlatform2" parent="." instance=ExtResource("11")]
+position = Vector2(1450, 320)
+move_vector = Vector2(180, 0)
+speed = 70.0
+
+[node name="Ground3" type="StaticBody2D" parent="."]
+position = Vector2(1900, 500)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Ground3"]
+shape = SubResource("Ground2Shape")
+
+[node name="LeftCap" type="Sprite2D" parent="Ground3"]
+position = Vector2(-202.5, 9.499993)
+scale = Vector2(0.7578125, 0.46093738)
+texture = ExtResource("8")
+
+[node name="RightCap" type="Sprite2D" parent="Ground3"]
+position = Vector2(202.5, 10.000006)
+scale = Vector2(0.7578125, 0.46874988)
+texture = ExtResource("9")
+
+[node name="Middle" type="TextureRect" parent="Ground3"]
+offset_left = -243.0
+offset_top = -20.0
+offset_right = 244.0
+offset_bottom = 39.0
+texture = SubResource("CompressedTexture2D_gips2")
+stretch_mode = 1
+
+[node name="MovingPlatform3" parent="." instance=ExtResource("11")]
+position = Vector2(2275, 300)
+move_vector = Vector2(0, 120)
+speed = 65.0
+
+[node name="Ground4" type="StaticBody2D" parent="."]
+position = Vector2(2650, 500)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Ground4"]
+shape = SubResource("Ground1Shape")
+
+[node name="LeftCap" type="Sprite2D" parent="Ground4"]
+position = Vector2(-252, 8.499999)
+scale = Vector2(0.75, 0.4765625)
+texture = ExtResource("8")
+
+[node name="RightCap" type="Sprite2D" parent="Ground4"]
+position = Vector2(252.5, 9.499993)
+scale = Vector2(0.7578125, 0.46093738)
+texture = ExtResource("9")
+
+[node name="Middle" type="TextureRect" parent="Ground4"]
+offset_left = -285.0
+offset_top = -20.0
+offset_right = 290.0
+offset_bottom = 39.0
+texture = SubResource("CompressedTexture2D_gips2")
+stretch_mode = 1
+
+[node name="FinalPlatform" type="StaticBody2D" parent="."]
+position = Vector2(3300, 450)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="FinalPlatform"]
+shape = SubResource("FinalPlatformShape")
+
+[node name="LeftCap" type="Sprite2D" parent="FinalPlatform"]
+position = Vector2(-103, 19.499989)
+scale = Vector2(0.765625, 0.47656247)
+texture = ExtResource("8")
+
+[node name="RightCap" type="Sprite2D" parent="FinalPlatform"]
+position = Vector2(102.5, 19.499977)
+scale = Vector2(0.7578125, 0.46093753)
+texture = ExtResource("9")
+
+[node name="Middle" type="TextureRect" parent="FinalPlatform"]
+offset_left = -136.0
+offset_top = -10.0
+offset_right = 111.0
+offset_bottom = 49.0
+texture = SubResource("CompressedTexture2D_gips2")
+stretch_mode = 1
+
+[node name="ArchSprite2" type="Sprite2D" parent="."]
+position = Vector2(3372, 379)
+scale = Vector2(0.60155106, 0.5654676)
+texture = ExtResource("12_3aekd")
+
+[node name="BushyTree1" type="Sprite2D" parent="."]
+position = Vector2(381.00003, 379.00003)
+scale = Vector2(0.6576923, 0.7264151)
+texture = ExtResource("14")
+
+[node name="SmallTree1" type="Sprite2D" parent="."]
+position = Vector2(1062, 427.00003)
+scale = Vector2(0.6481483, 0.59090894)
+texture = ExtResource("15")
+
+[node name="Signpost1" type="Sprite2D" parent="."]
+position = Vector2(2442, 409)
+texture = ExtResource("17")
+
+[node name="Player" parent="." instance=ExtResource("1")]
+position = Vector2(150, 440)
+
+[node name="Enemy1" parent="." instance=ExtResource("2")]
+position = Vector2(500, 468)
+patrol_distance = 150.0
+
+[node name="Enemy2" parent="." instance=ExtResource("2")]
+position = Vector2(1150, 468)
+patrol_distance = 200.0
+
+[node name="Enemy3" parent="." instance=ExtResource("2")]
+position = Vector2(1900, 468)
+patrol_distance = 200.0
+
+[node name="Enemy4" parent="." instance=ExtResource("2")]
+position = Vector2(2650, 468)
+patrol_distance = 250.0
+
+[node name="Enemy5" parent="." instance=ExtResource("2")]
+position = Vector2(2800, 468)
+
+[node name="Coin1" parent="." instance=ExtResource("3")]
+position = Vector2(300, 440)
+
+[node name="Coin2" parent="." instance=ExtResource("3")]
+position = Vector2(950, 440)
+
+[node name="Coin3" parent="." instance=ExtResource("3")]
+position = Vector2(1350, 440)
+
+[node name="Coin4" parent="." instance=ExtResource("3")]
+position = Vector2(1750, 440)
+
+[node name="Coin5" parent="." instance=ExtResource("3")]
+position = Vector2(2500, 440)
+
+[node name="Coin6" parent="." instance=ExtResource("3")]
+position = Vector2(2800, 440)
+
+[node name="Coin7" parent="." instance=ExtResource("3")]
+position = Vector2(3233, 381)
+
+[node name="Goal" parent="." instance=ExtResource("4")]
+visible = false
+position = Vector2(3385, 397)
+next_level_path = "res://scenes/Level3.tscn"
+
+[node name="Killzone" parent="." instance=ExtResource("5")]
+position = Vector2(1900, 700)
+
+[node name="HUD" parent="." instance=ExtResource("6")]
+
+[node name="TouchControls" parent="." instance=ExtResource("13")]

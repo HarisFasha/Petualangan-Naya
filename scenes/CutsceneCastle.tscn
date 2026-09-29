@@ -1,0 +1,80 @@
+[gd_scene load_steps=6 format=3 uid="uid://xvbcrcgssmp6"]
+
+[ext_resource type="Script" uid="uid://dk4mxb1mc6oab" path="res://scripts/CutsceneDialogue.gd" id="1"]
+[ext_resource type="Texture2D" uid="uid://dm04nrtxo4ec0" path="res://assets/sprites/player/idle1.png" id="2"]
+[ext_resource type="Texture2D" uid="uid://u0q0p3cke2ea" path="res://assets/sprites/props/1784131526026.png" id="2_8f643"]
+[ext_resource type="Texture2D" uid="uid://b1eo4613h5ieq" path="res://assets/sprites/player/1784106734915.png" id="4_8f643"]
+[ext_resource type="StyleBox" uid="uid://be7wq02x3i2e4" path="res://assets/ui/ComicBubble.tres" id="5"]
+
+[node name="CutsceneCastle" type="CanvasLayer"]
+script = ExtResource("1")
+lines = Array[String](["Akhirnya... ini dia, istana yang selama ini disebut-sebut sebagai tempat jodohku menanti.", "Seseorang berpakaian rapi mendatangi Naya.", "Kaukah itu... Naya? Yang selama ini dikatakan akan menjadi jodohku?", "Benar. Dan kau... Pangeran Haris?", "Ya. Sudah lama aku menunggu hari ini tiba.", "Aku tidak menyangka perjalanan ini akan berakhir seindah ini.", "Oh ya aku dengar hari ini kau berulang tahun...", "Selamat Ulang Tahun Sayangkuu Cintakuuu, Semoga kamu selalu cantik, nda suka marah marah lagi, I love u Sayangggg..", "Ayo ikut aku masuk istana akan ku kenalkan semua isi istana"])
+speakers = Array[String](["Naya", "", "Haris", "Naya", "Haris", "Naya", "Haris", "Haris"])
+next_scene_path = "res://scenes/CutsceneEnding.tscn"
+
+[node name="Background" type="TextureRect" parent="."]
+offset_left = -69.0
+offset_top = -74.0
+offset_right = 1448.0
+offset_bottom = 759.0
+texture = ExtResource("2_8f643")
+
+[node name="CharacterNaya" type="TextureRect" parent="."]
+offset_left = 519.0
+offset_top = 488.0
+offset_right = 643.0
+offset_bottom = 705.0
+texture = ExtResource("2")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="CharacterHaris" type="TextureRect" parent="."]
+texture_filter = 1
+offset_left = 680.0
+offset_top = 418.0
+offset_right = 859.0
+offset_bottom = 694.0
+texture = ExtResource("4_8f643")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="DialogBox" type="Panel" parent="."]
+offset_left = 78.0
+offset_top = 173.0
+offset_right = 1258.0
+offset_bottom = 343.0
+theme_override_styles/panel = ExtResource("5")
+
+[node name="NameLabel" type="Label" parent="DialogBox"]
+layout_mode = 0
+offset_left = 25.0
+offset_top = 8.0
+offset_right = 400.0
+offset_bottom = 34.0
+theme_override_colors/font_color = Color(0.5, 0.35, 0.7, 1)
+theme_override_font_sizes/font_size = 18
+
+[node name="Label" type="Label" parent="DialogBox"]
+layout_mode = 0
+offset_left = 25.0
+offset_top = 36.0
+offset_right = 1180.0
+offset_bottom = 130.0
+theme_override_colors/font_color = Color(0.1, 0.1, 0.12, 1)
+theme_override_font_sizes/font_size = 24
+text = "..."
+autowrap_mode = 3
+
+[node name="PromptLabel" type="Label" parent="DialogBox"]
+layout_mode = 0
+offset_left = 25.0
+offset_top = 135.0
+offset_right = 500.0
+offset_bottom = 165.0
+theme_override_colors/font_color = Color(0.35, 0.35, 0.38, 1)
+theme_override_font_sizes/font_size = 14
+text = "Tekan SPACE / tap layar untuk lanjut • ESC untuk restart"
+
+[node name="TypeTimer" type="Timer" parent="."]
+
+[connection signal="timeout" from="TypeTimer" to="." method="_on_type_timer_timeout"]

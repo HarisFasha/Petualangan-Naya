@@ -1,0 +1,274 @@
+[gd_scene load_steps=21 format=3 uid="uid://cxbyucq1635q1"]
+
+[ext_resource type="PackedScene" uid="uid://c6i04m2rsq2fh" path="res://scenes/Player.tscn" id="1"]
+[ext_resource type="PackedScene" uid="uid://dmdb6d0st484r" path="res://scenes/Enemy.tscn" id="2"]
+[ext_resource type="PackedScene" path="res://scenes/Coin.tscn" id="3"]
+[ext_resource type="Texture2D" uid="uid://7b2gdnaaik1p" path="res://assets/sprites/terrain/top1.png" id="3_1fmh2"]
+[ext_resource type="PackedScene" uid="uid://b4v8jywffq32v" path="res://scenes/Goal.tscn" id="4"]
+[ext_resource type="PackedScene" path="res://scenes/Killzone.tscn" id="5"]
+[ext_resource type="PackedScene" uid="uid://b7f1q6oq2umm7" path="res://scenes/HUD.tscn" id="6"]
+[ext_resource type="Texture2D" uid="uid://dw8mj36mhvruy" path="res://assets/sprites/terrain/top_left.png" id="8"]
+[ext_resource type="Texture2D" uid="uid://bm2mk8bn663ft" path="res://assets/sprites/terrain/top_right.png" id="9"]
+[ext_resource type="PackedScene" uid="uid://cjwmodi1kgffc" path="res://scenes/MovingPlatform.tscn" id="11"]
+[ext_resource type="PackedScene" path="res://scenes/TouchControls.tscn" id="13"]
+[ext_resource type="Texture2D" uid="uid://caoawtbj38d1v" path="res://assets/sprites/props/stone_arch.png" id="15"]
+[ext_resource type="Texture2D" uid="uid://dy7p8tkaynsql" path="res://assets/sprites/props/awan 1.png" id="15_qtcjj"]
+[ext_resource type="Texture2D" uid="uid://dstd7hc4imy33" path="res://assets/sprites/props/awan 2.png" id="16_rljsv"]
+[ext_resource type="Texture2D" uid="uid://da3h8f5wyojli" path="res://assets/sprites/props/awan 3.png" id="17_v36no"]
+[ext_resource type="Texture2D" uid="uid://cj4q3itkcnqj0" path="res://assets/sprites/props/bushy_tree.png" id="18"]
+[ext_resource type="Texture2D" uid="uid://diqym2f2kj6bb" path="res://assets/sprites/props/signpost.png" id="20"]
+
+[sub_resource type="RectangleShape2D" id="Ground1Shape"]
+size = Vector2(600, 40)
+
+[sub_resource type="RectangleShape2D" id="Ground2Shape"]
+size = Vector2(500, 40)
+
+[sub_resource type="RectangleShape2D" id="FinalPlatformShape"]
+size = Vector2(400, 20)
+
+[node name="Level3" type="Node2D"]
+
+[node name="Background" type="ColorRect" parent="."]
+show_behind_parent = true
+offset_left = -893.0
+offset_top = -438.0
+offset_right = 4113.0
+offset_bottom = 1180.0
+color = Color(0.5294118, 0.7490196, 0.9490196, 1)
+
+[node name="awan 1" type="Sprite2D" parent="."]
+position = Vector2(497, 190)
+texture = ExtResource("15_qtcjj")
+
+[node name="awan 2" type="Sprite2D" parent="."]
+position = Vector2(2242, 142)
+texture = ExtResource("15_qtcjj")
+
+[node name="awan 3" type="Sprite2D" parent="."]
+position = Vector2(1279.0001, 142.00002)
+scale = Vector2(1.2671958, 1.2662338)
+texture = ExtResource("16_rljsv")
+
+[node name="awan 4" type="Sprite2D" parent="."]
+position = Vector2(2260, 192)
+texture = ExtResource("17_v36no")
+
+[node name="awan 5" type="Sprite2D" parent="."]
+position = Vector2(3302, 180)
+scale = Vector2(1.2671958, 1.2662338)
+texture = ExtResource("16_rljsv")
+
+[node name="awan 6" type="Sprite2D" parent="."]
+position = Vector2(3284, 213)
+texture = ExtResource("17_v36no")
+
+[node name="Ground1" type="StaticBody2D" parent="."]
+position = Vector2(400, 500)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Ground1"]
+shape = SubResource("Ground1Shape")
+
+[node name="LeftCap" type="Sprite2D" parent="Ground1"]
+position = Vector2(-252.5, 10.5000105)
+scale = Vector2(0.7578125, 0.47656268)
+texture = ExtResource("8")
+
+[node name="RightCap" type="Sprite2D" parent="Ground1"]
+position = Vector2(253, 9.500001)
+scale = Vector2(0.765625, 0.47656286)
+texture = ExtResource("9")
+
+[node name="Middle" type="TextureRect" parent="Ground1"]
+offset_left = -285.0
+offset_top = -20.0
+offset_right = 283.0
+offset_bottom = 39.0
+texture = ExtResource("3_1fmh2")
+stretch_mode = 1
+
+[node name="MovingPlatform1" parent="." instance=ExtResource("11")]
+position = Vector2(825, 340)
+speed = 60.0
+
+[node name="Ground2" type="StaticBody2D" parent="."]
+position = Vector2(1200, 500)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Ground2"]
+shape = SubResource("Ground2Shape")
+
+[node name="LeftCap" type="Sprite2D" parent="Ground2"]
+position = Vector2(-202.5, 8.499999)
+scale = Vector2(0.7578124, 0.4765625)
+texture = ExtResource("8")
+
+[node name="RightCap" type="Sprite2D" parent="Ground2"]
+position = Vector2(202.5, 9.00001)
+scale = Vector2(0.7578125, 0.46874997)
+texture = ExtResource("9")
+
+[node name="Middle" type="TextureRect" parent="Ground2"]
+offset_left = -240.0
+offset_top = -20.0
+offset_right = 243.0
+offset_bottom = 39.0
+texture = ExtResource("3_1fmh2")
+stretch_mode = 1
+
+[node name="MovingPlatform2" parent="." instance=ExtResource("11")]
+position = Vector2(1575, 300)
+move_vector = Vector2(0, 110)
+speed = 55.0
+
+[node name="Ground3" type="StaticBody2D" parent="."]
+position = Vector2(1950, 500)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Ground3"]
+shape = SubResource("Ground2Shape")
+
+[node name="LeftCap" type="Sprite2D" parent="Ground3"]
+position = Vector2(-200.5, 8.999996)
+scale = Vector2(0.8046875, 0.4687501)
+texture = ExtResource("8")
+
+[node name="RightCap" type="Sprite2D" parent="Ground3"]
+position = Vector2(203, 8.999989)
+scale = Vector2(0.765625, 0.4687503)
+texture = ExtResource("9")
+
+[node name="Middle" type="TextureRect" parent="Ground3"]
+offset_left = -240.0
+offset_top = -20.0
+offset_right = 242.0
+offset_bottom = 39.0
+texture = ExtResource("3_1fmh2")
+stretch_mode = 1
+
+[node name="Ground4" type="StaticBody2D" parent="."]
+position = Vector2(2600, 500)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Ground4"]
+shape = SubResource("Ground1Shape")
+
+[node name="LeftCap" type="Sprite2D" parent="Ground4"]
+position = Vector2(-253, 9.000013)
+scale = Vector2(0.765625, 0.46874997)
+texture = ExtResource("8")
+
+[node name="RightCap" type="Sprite2D" parent="Ground4"]
+position = Vector2(252.5, 9.499993)
+scale = Vector2(0.7578125, 0.46093738)
+texture = ExtResource("9")
+
+[node name="Middle" type="TextureRect" parent="Ground4"]
+offset_left = -292.0
+offset_top = -20.0
+offset_right = 291.0
+offset_bottom = 39.0
+texture = ExtResource("3_1fmh2")
+stretch_mode = 1
+
+[node name="FinalPlatform" type="StaticBody2D" parent="."]
+position = Vector2(3300, 450)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="FinalPlatform"]
+shape = SubResource("FinalPlatformShape")
+
+[node name="LeftCap" type="Sprite2D" parent="FinalPlatform"]
+position = Vector2(-153, 19.999996)
+scale = Vector2(0.765625, 0.46875036)
+texture = ExtResource("8")
+
+[node name="RightCap" type="Sprite2D" parent="FinalPlatform"]
+position = Vector2(136, 19.000011)
+scale = Vector2(1, 0.46874994)
+texture = ExtResource("9")
+
+[node name="Middle" type="TextureRect" parent="FinalPlatform"]
+offset_left = -191.0
+offset_top = -10.0
+offset_right = 157.0
+offset_bottom = 49.0
+texture = ExtResource("3_1fmh2")
+stretch_mode = 1
+
+[node name="Castle" type="Node2D" parent="."]
+position = Vector2(3550, 480)
+
+[node name="ArchSprite" type="Sprite2D" parent="Castle"]
+position = Vector2(-126.99989, -103.999985)
+scale = Vector2(0.60155106, 0.5654676)
+texture = ExtResource("15")
+
+[node name="Flagpole" type="ColorRect" parent="Castle"]
+offset_left = -129.0
+offset_top = -237.0
+offset_right = -125.0
+offset_bottom = -177.0
+color = Color(0.3, 0.28, 0.25, 1)
+
+[node name="Flag" type="Polygon2D" parent="Castle"]
+position = Vector2(-126, 216)
+color = Color(0.8, 0.65, 0.15, 1)
+polygon = PackedVector2Array(2, -450, 40, -438, 2, -426)
+
+[node name="BushyTree1" type="Sprite2D" parent="."]
+position = Vector2(220.00002, 398.00003)
+scale = Vector2(0.6615385, 0.6163522)
+texture = ExtResource("18")
+
+[node name="Signpost1" type="Sprite2D" parent="."]
+position = Vector2(1980, 415)
+texture = ExtResource("20")
+
+[node name="Player" parent="." instance=ExtResource("1")]
+position = Vector2(150, 440)
+
+[node name="Enemy1" parent="." instance=ExtResource("2")]
+position = Vector2(500, 468)
+patrol_distance = 150.0
+
+[node name="Enemy2" parent="." instance=ExtResource("2")]
+position = Vector2(1200, 468)
+patrol_distance = 200.0
+
+[node name="Enemy3" parent="." instance=ExtResource("2")]
+position = Vector2(1950, 468)
+patrol_distance = 200.0
+
+[node name="Enemy4" parent="." instance=ExtResource("2")]
+position = Vector2(2600, 468)
+patrol_distance = 250.0
+
+[node name="Enemy5" parent="." instance=ExtResource("2")]
+position = Vector2(2750, 468)
+
+[node name="Coin1" parent="." instance=ExtResource("3")]
+position = Vector2(300, 440)
+
+[node name="Coin2" parent="." instance=ExtResource("3")]
+position = Vector2(1000, 440)
+
+[node name="Coin3" parent="." instance=ExtResource("3")]
+position = Vector2(1400, 440)
+
+[node name="Coin4" parent="." instance=ExtResource("3")]
+position = Vector2(1850, 440)
+
+[node name="Coin5" parent="." instance=ExtResource("3")]
+position = Vector2(2800, 440)
+
+[node name="Coin6" parent="." instance=ExtResource("3")]
+position = Vector2(3300, 380)
+
+[node name="Goal" parent="." instance=ExtResource("4")]
+visible = false
+position = Vector2(3429, 397)
+next_level_path = "res://scenes/CutsceneCastle.tscn"
+
+[node name="Killzone" parent="." instance=ExtResource("5")]
+position = Vector2(1900, 700)
+
+[node name="HUD" parent="." instance=ExtResource("6")]
+
+[node name="TouchControls" parent="." instance=ExtResource("13")]

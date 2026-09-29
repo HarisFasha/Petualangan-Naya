@@ -1,0 +1,32 @@
+[gd_scene load_steps=7 format=3]
+
+[ext_resource type="Texture2D" path="res://assets/ui/btn_left.png" id="1"]
+[ext_resource type="Texture2D" path="res://assets/ui/btn_left_pressed.png" id="2"]
+[ext_resource type="Texture2D" path="res://assets/ui/btn_right.png" id="3"]
+[ext_resource type="Texture2D" path="res://assets/ui/btn_right_pressed.png" id="4"]
+[ext_resource type="Texture2D" path="res://assets/ui/btn_jump.png" id="5"]
+[ext_resource type="Texture2D" path="res://assets/ui/btn_jump_pressed.png" id="6"]
+
+[node name="TouchControls" type="CanvasLayer"]
+layer = 10
+
+[node name="LeftButton" type="TouchScreenButton" parent="."]
+position = Vector2(40, 560)
+texture_normal = ExtResource("1")
+texture_pressed = ExtResource("2")
+action = "ui_left"
+visibility_mode = 1
+
+[node name="RightButton" type="TouchScreenButton" parent="."]
+position = Vector2(180, 560)
+texture_normal = ExtResource("3")
+texture_pressed = ExtResource("4")
+action = "ui_right"
+visibility_mode = 1
+
+[node name="JumpButton" type="TouchScreenButton" parent="."]
+position = Vector2(1090, 550)
+texture_normal = ExtResource("5")
+texture_pressed = ExtResource("6")
+action = "ui_accept"
+visibility_mode = 1
